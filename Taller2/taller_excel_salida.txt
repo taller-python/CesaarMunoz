@@ -1,0 +1,39 @@
+procesando SUMA
+3
+13
+10
+Error
+7
+7
+Error
+5
+9
+procesando RESTA
+0
+0
+0
+Error
+-1
+Error
+1
+1
+procesando MULTIPLICACIÓN
+2
+6
+32
+Error
+Error
+20
+0
+Error
+8
+procesando DIVISIÓN
+0.75
+0.3333333333333333
+Error
+Error
+0.75
+1.0
+Error
+5.0
+1.25
