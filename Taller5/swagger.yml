@@ -1,0 +1,122 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger Rest Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Rutas soportadas por la aplicacion servidor
+paths:
+  /empleado:
+    post:
+      operationId: empleado.insertar
+      tags:
+        - Empleado
+      summary: Insertar un empleado en la base de datos
+      description: Crea un empleado nuevo
+      parameters:
+        - name: empleado
+          in: body
+          description: Empleado a insertar
+          required: True
+          schema:
+            type: object
+            properties:
+              emp_cc:
+                type: string
+                description: Cedula del empleado
+              emp_nombre:
+                type: string
+                description: Nombre del empleado
+              emp_email:
+                type: string
+                description: E-mail del empleado
+              emp_cargo:
+                type: string
+                description: Cargo del empleado
+              emp_val_hora:
+                type: number 
+                description: Valor hora para calculo del salario
+      responses:
+        201:
+          description: Empleado creado satisfactoriamente
+
+  /empleado/{emp_cc}:
+    get:
+      operationId: empleado.buscar
+      tags:
+        - Empleado
+      summary: Buscar un empleado en la base de datos
+      description: Muestra un empleado
+      parameters:
+        - name: emp_cc
+          in: path
+          description: Cedula del empleado
+          type: string
+          required: True
+      responses:
+        200:
+          description: Empleado encontrado en la base de datos
+          schema:
+            properties:
+              emp_cc:
+                type: string
+              emp_nombre:
+                type: string
+              emp_email:
+                type: string
+              emp_cargo:
+                type: string
+              emp_val_hora:
+                type: number 
+              emp_horas:
+                type: number 
+              emp_salario:
+                type: number 
+
+    put:
+      operationId: empleado.modificar
+      tags:
+        - Empleado
+      summary: Actualizar el salario del empleado segun las horas
+      description: Actualiza las horas y el salario del empleado
+      parameters:
+        - name: emp_cc
+          in: path
+          description: Cedula del empleado a actualizar
+          type: string
+          required: True
+        - name: empleado
+          in: body
+          schema:
+            type: object
+            properties:
+              emp_val_hora:
+                type: number 
+              emp_horas:
+                type: number 
+
+      responses:
+        200:
+          description: Actualizacion exitosa
+
+    delete:
+      operationId: empleado.borrar
+      tags:
+        - Empleado
+      summary: Borrar un empleado de la base de datos
+      description: Borra un empleado
+      parameters:
+        - name: emp_cc
+          in: path
+          description: Cedula del empleado
+          type: string
+          required: True
+      responses:
+        200:
+          description: Empleado borrado con exito
